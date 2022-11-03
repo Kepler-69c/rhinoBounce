@@ -4,6 +4,7 @@ window.addEventListener('load', function() {
 	var canvas = document.getElementById('world');
 	var height = this.window.innerHeight;
     var width = this.window.innerWidth;
+    var sizeSlider = this.document.querySelector('input[type="range"]');
     var appearX = width*(2/3), appearY = 0;
     var size = 40;
 
@@ -92,6 +93,15 @@ window.addEventListener('load', function() {
             bodyB: ball
         }));
     }
+    function softBody() {
+        // add bodies
+        var particleOptions = { 
+            friction: 0.05, frictionStatic: 0.1, render: { visible: true } };
+        Composite.add(world, 
+            // see softBody function defined later in this file
+            softBody(appearX-(5*5), appearY, 5, 5, 0, 0, true, size/2, particleOptions)
+        );
+    }
     function resetEngine() {
         Matter.Render.stop(render);
         Matter.World.clear(engine.world);
@@ -110,12 +120,19 @@ window.addEventListener('load', function() {
         Matter.World.add(world, mouseConstraint);
     }
 
+    function rangeValue() {
+        var newValue = sizeSlider.value;
+        size = newValue;
+        var target = document.querySelector('.value');
+        target.innerHTML = newValue;
+      }
+
+    // init
     addWalls();
     addPendulum();
     rhinoStack();
     mouseInit();
 
-	
 	//Start the engine
 	Matter.Engine.run(engine);
 	Matter.Render.run(render);
@@ -123,11 +140,50 @@ window.addEventListener('load', function() {
     // event listeners
     this.document.getElementsByClassName("menu-item")[0].addEventListener("click", addRect, false);
     this.document.getElementsByClassName("menu-item")[1].addEventListener("click", addBall, false);
-    this.document.getElementsByClassName("menu-item")[2].addEventListener("click", rhinoStack, false);
+    this.document.getElementsByClassName("menu-item")[2].addEventListener("click", softBody, false);
     this.document.getElementsByClassName("menu-item")[3].addEventListener("click", addRhino, false);
     this.document.getElementsByClassName("menu-item")[4].addEventListener("click", rectStack, false);
     this.document.getElementsByClassName("menu-item")[5].addEventListener("click", rhinoStack, false);
     this.document.getElementsByClassName("menu-item")[6].addEventListener("click", circleStack, false);
-    this.document.getElementsByClassName("menu-item")[7].addEventListener("click", resetEngine, false);
+    sizeSlider.addEventListener("input", rangeValue, false);
+    this.document.getElementsByClassName("menu-item")[9].addEventListener("click", resetEngine, false);
+
+    /**
+    * Creates a simple soft body like object.
+    * @method softBody
+    * @param {number} xx
+    * @param {number} yy
+    * @param {number} columns
+    * @param {number} rows
+    * @param {number} columnGap
+    * @param {number} rowGap
+    * @param {boolean} crossBrace
+    * @param {number} particleRadius
+    * @param {} particleOptions
+    * @param {} constraintOptions
+    * @return {composite} A new composite softBody
+    */
+    softBody = function(xx, yy, columns, rows, columnGap, rowGap, crossBrace, particleRadius, particleOptions, constraintOptions) {
+        var Common = Matter.Common,
+            Composites = Matter.Composites,
+            Bodies = Matter.Bodies;
+
+        particleOptions = Common.extend({ inertia: Infinity }, particleOptions);
+        constraintOptions = Common.extend({ stiffness: 0.2, render: { type: 'line', anchors: false } }, constraintOptions);
+
+        var softBody = Composites.stack(xx, yy, columns, rows, columnGap, rowGap, function(x, y) {
+            return Bodies.circle(x, y, particleRadius, particleOptions);
+        });
+
+        Composites.mesh(softBody, columns, rows, crossBrace, constraintOptions);
+
+        softBody.label = 'Soft Body';
+
+        return softBody;
+    };
+
+    if (typeof module !== 'undefined') {
+        module.exports = Example.softBody;
+    }
 
 });

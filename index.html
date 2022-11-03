@@ -10,24 +10,30 @@
         </script>
 	</head>
 	<body>
-        <div class="container">
-            <div class="menu">
-              <ul class="menu-list">
-                <li class="menu-item"><button class="menu-button"><i data-feather="box"></i>Box</button></li>
-                <li class="menu-item"><button class="menu-button"><i data-feather="circle"></i>Ball</button></li>
-                <li class="menu-item"><button class="menu-button"><i data-feather="droplet"></i>Soft Body</button></li>
-                <li class="menu-item"><button class="menu-button menu-button--orange"><i data-feather="triangle"></i>Rhino</button></li>
+        <div class="menu">
+            <ul class="menu-list">
+            <li class="menu-item"><button class="menu-button"><i data-feather="box"></i>Box</button></li>
+            <li class="menu-item"><button class="menu-button"><i data-feather="circle"></i>Ball</button></li>
+            <li class="menu-item"><button class="menu-button"><i data-feather="droplet"></i>Soft Body</button></li>
+            <li class="menu-item"><button class="menu-button menu-button--orange"><i data-feather="triangle"></i>Rhino</button></li>
+            </ul>
+            <ul class="menu-list">
+            <li class="menu-item"><button class="menu-button"><i data-feather="grid"></i>Box Stack</button></li>
+            <li class="menu-item"><button class="menu-button menu-button--orange"><i data-feather="triangle"></i>Rhino Stack</button></li>
+            <li class="menu-item"><button class="menu-button"><i data-feather="circle"></i>Circle Stack</button></li>
+            </ul>
+            <ul class="menu-list">
+                <li class="menu-item"><button class="menu-button"><i data-feather="maximize-2"></i>Size:<div class="value">40</div></button></li>
+                <li class="menu-item">
+                  <div class="menu-slider">
+                    <input type="range" min="20" max="100" step="10" value="40">
+                  </div>
+                </li>
               </ul>
-              <ul class="menu-list">
-                <li class="menu-item"><button class="menu-button"><i data-feather="grid"></i>Box Stack</button></li>
-                <li class="menu-item"><button class="menu-button menu-button--orange"><i data-feather="triangle"></i>Rhino Stack</button></li>
-                <li class="menu-item"><button class="menu-button"><i data-feather="circle"></i>Circle Stack</button></li>
-              </ul>
-              <ul class="menu-list">
-                <li class="menu-item"><button class="menu-button menu-button--delete"><i data-feather="rotate-cw"></i>Clear</button></li>
-              </ul>
-            </div>
-          </div>
+            <ul class="menu-list">
+            <li class="menu-item"><button class="menu-button menu-button--delete"><i data-feather="rotate-cw"></i>Clear</button></li>
+            </ul>
+        </div>
 
 		<canvas id="world"></canvas>
 		<script src="script.js"></script>
