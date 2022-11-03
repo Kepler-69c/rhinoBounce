@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Rhino Bounce</title>
+        <script src="https://unpkg.com/feather-icons"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.10.0/matter.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            window.addEventListener('load', function() {feather.replace()});
+        </script>
+	</head>
+	<body>
+        <div class="container">
+            <div class="menu">
+              <ul class="menu-list">
+                <li class="menu-item"><button class="menu-button"><i data-feather="box"></i>Box</button></li>
+                <li class="menu-item"><button class="menu-button"><i data-feather="circle"></i>Ball</button></li>
+                <li class="menu-item"><button class="menu-button"><i data-feather="droplet"></i>Soft Body</button></li>
+                <li class="menu-item"><button class="menu-button menu-button--orange"><i data-feather="triangle"></i>Rhino</button></li>
+              </ul>
+              <ul class="menu-list">
+                <li class="menu-item"><button class="menu-button"><i data-feather="grid"></i>Box Stack</button></li>
+                <li class="menu-item"><button class="menu-button menu-button--orange"><i data-feather="triangle"></i>Rhino Stack</button></li>
+                <li class="menu-item"><button class="menu-button"><i data-feather="circle"></i>Circle Stack</button></li>
+              </ul>
+              <ul class="menu-list">
+                <li class="menu-item"><button class="menu-button menu-button--delete"><i data-feather="rotate-cw"></i>Clear</button></li>
+              </ul>
+            </div>
+          </div>
+
+		<canvas id="world"></canvas>
+		<script src="script.js"></script>
+	</body>
+</html>
