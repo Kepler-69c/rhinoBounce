@@ -8,6 +8,9 @@ window.addEventListener('load', function() {
     var appearX = width*(2/3), appearY = 0;
     var size = 40;
 
+    // canvas.width = width;
+    // canvas.height = height;
+
 	//Setup Matter JS
 	var engine = Matter.Engine.create();
     var Composites = Matter.Composites;
@@ -137,7 +140,8 @@ window.addEventListener('load', function() {
 
     // init
     addWalls();
-    addPendulum();
+    if (width > 800){
+        addPendulum();}
     rhinoStack();
     mouseInit();
 
@@ -156,6 +160,18 @@ window.addEventListener('load', function() {
     this.document.getElementsByClassName("menu-item")[8].addEventListener("click", circleStack, false);
     sizeSlider.addEventListener("input", rangeValue, false);
     this.document.getElementsByClassName("menu-item")[11].addEventListener("click", resetEngine, false);
+
+    window.addEventListener('resize', () => {
+        width = this.window.innerWidth;
+        height = this.window.innerHeight;
+        render.bounds.max.x = width;
+        render.bounds.max.y = height;
+        render.options.width = width;
+        render.options.height = height;
+        render.canvas.width = width;
+        render.canvas.height = height;
+        resetEngine();
+    });
 
     /**
     * Creates a simple soft body like object.
