@@ -39,13 +39,21 @@ window.addEventListener('load', function() {
     }
     function addRhino() {
         //Add a rhino
-        var rhino = Matter.Bodies.rectangle(appearX, appearY, 100, 126, {
-            density: 0.04, friction: 0.01, frictionAir: 0.00001, restitution: 0.8,
+        var rhino = Matter.Bodies.rectangle(appearX, appearY, size*3, size*3*(5/4), {
+            density: 0.04, friction: 0.01, frictionAir: 0.00001, restitution: 0.4,
             render: {/*fillStyle: '#F35e66',*/ strokeStyle: 'black',/*lineWidth: 1,*/
-                sprite: {texture: 'rhino.svg', xScale: .3, yScale: .3}}});
+                sprite: {texture: 'rhino.svg', xScale: .00265*size*3, yScale: .00265*size*3}}});
         Matter.World.add(world, rhino);
     }
-	function addWalls() {
+    function bouncyRhino() {
+        //Add bouncy rhino
+        var rhino = Matter.Bodies.rectangle(appearX, appearY, size*3, size*3*(5/4), {
+            density: 4, friction: 0.01, frictionAir: 0.00001, restitution: 1,
+            render: {/*fillStyle: '#F35e66',*/ strokeStyle: 'black',/*lineWidth: 1,*/
+                sprite: {texture: 'rhino.svg', xScale: .00265*size*3, yScale: .00265*size*3}}});
+        Matter.World.add(world, rhino);
+    }
+    function addWalls() {
         // add walls
         Composite.add(world, [
             Matter.Bodies.rectangle(width/2, height-20, width*0.95, 20, {
@@ -142,11 +150,12 @@ window.addEventListener('load', function() {
     this.document.getElementsByClassName("menu-item")[1].addEventListener("click", addBall, false);
     this.document.getElementsByClassName("menu-item")[2].addEventListener("click", softBody, false);
     this.document.getElementsByClassName("menu-item")[3].addEventListener("click", addRhino, false);
-    this.document.getElementsByClassName("menu-item")[4].addEventListener("click", rectStack, false);
-    this.document.getElementsByClassName("menu-item")[5].addEventListener("click", rhinoStack, false);
-    this.document.getElementsByClassName("menu-item")[6].addEventListener("click", circleStack, false);
+    this.document.getElementsByClassName("menu-item")[4].addEventListener("click", bouncyRhino, false);
+    this.document.getElementsByClassName("menu-item")[5].addEventListener("click", rectStack, false);
+    this.document.getElementsByClassName("menu-item")[6].addEventListener("click", rhinoStack, false);
+    this.document.getElementsByClassName("menu-item")[7].addEventListener("click", circleStack, false);
     sizeSlider.addEventListener("input", rangeValue, false);
-    this.document.getElementsByClassName("menu-item")[9].addEventListener("click", resetEngine, false);
+    this.document.getElementsByClassName("menu-item")[10].addEventListener("click", resetEngine, false);
 
     /**
     * Creates a simple soft body like object.

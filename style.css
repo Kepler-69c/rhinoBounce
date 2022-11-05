@@ -36,6 +36,11 @@ html, body {
   box-shadow: 0 10px 20px rgba(64, 64, 64, 0.15);
 }
 
+.info {
+  right: initial;
+  left: 20px;
+}
+
 .menu-list {
   margin: 0;
   display: block;
@@ -105,7 +110,7 @@ html, body {
 }
 
 .value {padding-left: 5px;}
-
+label {display: none;}
 .menu-slider {
   padding: 16px 8px;
 }
