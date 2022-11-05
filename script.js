@@ -146,16 +146,16 @@ window.addEventListener('load', function() {
 	Matter.Render.run(render);
 	
     // event listeners
-    this.document.getElementsByClassName("menu-item")[0].addEventListener("click", addRect, false);
-    this.document.getElementsByClassName("menu-item")[1].addEventListener("click", addBall, false);
-    this.document.getElementsByClassName("menu-item")[2].addEventListener("click", softBody, false);
-    this.document.getElementsByClassName("menu-item")[3].addEventListener("click", addRhino, false);
-    this.document.getElementsByClassName("menu-item")[4].addEventListener("click", bouncyRhino, false);
-    this.document.getElementsByClassName("menu-item")[5].addEventListener("click", rectStack, false);
-    this.document.getElementsByClassName("menu-item")[6].addEventListener("click", rhinoStack, false);
-    this.document.getElementsByClassName("menu-item")[7].addEventListener("click", circleStack, false);
+    this.document.getElementsByClassName("menu-item")[1].addEventListener("click", addRect, false);
+    this.document.getElementsByClassName("menu-item")[2].addEventListener("click", addBall, false);
+    this.document.getElementsByClassName("menu-item")[3].addEventListener("click", softBody, false);
+    this.document.getElementsByClassName("menu-item")[4].addEventListener("click", addRhino, false);
+    this.document.getElementsByClassName("menu-item")[5].addEventListener("click", bouncyRhino, false);
+    this.document.getElementsByClassName("menu-item")[6].addEventListener("click", rectStack, false);
+    this.document.getElementsByClassName("menu-item")[7].addEventListener("click", rhinoStack, false);
+    this.document.getElementsByClassName("menu-item")[8].addEventListener("click", circleStack, false);
     sizeSlider.addEventListener("input", rangeValue, false);
-    this.document.getElementsByClassName("menu-item")[10].addEventListener("click", resetEngine, false);
+    this.document.getElementsByClassName("menu-item")[11].addEventListener("click", resetEngine, false);
 
     /**
     * Creates a simple soft body like object.

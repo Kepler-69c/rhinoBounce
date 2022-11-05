@@ -15,6 +15,9 @@
   --color-purple: #657cc4;
   --color-black: var(--color-text-primary);
   --color-red: #d92027;
+
+  --radius: 10px;
+  --shadow: 0 10px 20px rgba(64, 64, 64, 0.15);
 }
 
 html, body {
@@ -32,8 +35,8 @@ html, body {
   top: 20px;
   right: 20px;
   background-color: var(--color-bg-secondary);
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(64, 64, 64, 0.15);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .info {
@@ -57,6 +60,7 @@ html, body {
 }
 
 .menu-button, .menu-slider {
+  text-decoration: none;
   font: inherit;
   border: 0;
   padding: 8px 8px;
@@ -68,6 +72,7 @@ html, body {
   align-items: center;
   position: relative;
   background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
 }
 .menu-button:hover, .menu-slider:hover {
   background-color: var(--color-bg-primary-offset);
@@ -75,7 +80,7 @@ html, body {
 .menu-button:hover svg {
   stroke: var(--color-text-primary);
 }
-.menu-button svg {
+.menu-button svg, .close svg {
   flex-shrink: 0;
   width: 20px;
   height: 20px;
@@ -142,3 +147,56 @@ input[type="range"]::-webkit-slider-thumb {
   input[type="range"]::-webkit-slider-thumb:active {
     transform: scale(1.6);
   }
+
+/* modal *********************************************************************************** */
+
+#modal {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  visibility: hidden;
+}
+#modal:target {
+  opacity: 1;
+  visibility: visible;
+}
+#modal:target .modal-body {
+  opacity: 1;
+  transform: translateY(1);
+}
+#modal .modal-body {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  margin: 40px;
+  max-width: 400px;
+  width: 100%;
+
+  max-width: 500px;
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: opacity 0.25s ease-in-out;
+  width: 100%;
+  z-index: 1;
+}
+
+.outside-trigger {
+  bottom: 0;
+  cursor: default;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
