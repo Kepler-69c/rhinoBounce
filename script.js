@@ -45,7 +45,7 @@ window.addEventListener('load', function() {
         var rhino = Matter.Bodies.rectangle(appearX, appearY, size*3, size*3*(5/4), {
             density: 0.04, friction: 0.01, frictionAir: 0.00001, restitution: 0.4,
             render: {/*fillStyle: '#F35e66',*/ strokeStyle: 'black',/*lineWidth: 1,*/
-                sprite: {texture: 'rhino.svg', xScale: .00265*size*3, yScale: .00265*size*3}}});
+                sprite: {texture: 'rhino.svg', xScale: (3*0.00265)*size, yScale: (3*0.00265)*size}}});
         Matter.World.add(world, rhino);
     }
     function bouncyRhino() {
@@ -53,7 +53,7 @@ window.addEventListener('load', function() {
         var rhino = Matter.Bodies.rectangle(appearX, appearY, size*3, size*3*(5/4), {
             density: 4, friction: 0.01, frictionAir: 0.00001, restitution: 1,
             render: {/*fillStyle: '#F35e66',*/ strokeStyle: 'black',/*lineWidth: 1,*/
-                sprite: {texture: 'rhino.svg', xScale: .00265*size*3, yScale: .00265*size*3}}});
+                sprite: {texture: 'rhino.svg', xScale: (3*0.00265)*size, yScale: (3* 0.00265)*size}}});
         Matter.World.add(world, rhino);
     }
     function addWalls() {
