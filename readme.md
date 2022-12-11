@@ -4,7 +4,7 @@ A simple physics sandbox, built with the javascript library `matter.js`.
 
 This was supposed to be an experiment with the library, but the main goal was probably to make some badly drawn rhinos bounce around.
 
-If you want to try it yourself, here is the website: (rhino-bounce.tk)[https://rhino-bounce.tk]
+If you want to try it yourself, here is the website: [rhino-bounce.tk](https://rhino-bounce.tk)
 
 
 <!--
